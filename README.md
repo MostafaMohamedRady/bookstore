@@ -8,7 +8,7 @@ book-store:- API for an online bookstore, where the user can perform the followi
 This maven project can be used by any IDE just clone the project and open it as a maven project.
 To install and run test cases use the following maven command-line
 ```
-mvn clean install
+mvn test
 ```
 To create code cover report [You can find this report in the target/site/jacoco directory]
 ```
@@ -17,6 +17,11 @@ mvn test jacoco:report
 To Run the application
 ```
 mvn  spring-boot:run
+```
+To Run the application using DOCKER
+```
+docker build --tag=bookstore:latest .
+docker run -p8080:8080 bookstore:latest
 ```
 ## Tools
 ```
