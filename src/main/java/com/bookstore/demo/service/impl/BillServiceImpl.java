@@ -34,6 +34,7 @@ public class BillServiceImpl implements BillService {
      * fetch promo code details from db / discount per book type
      * calculate total amount for all books
      * calculate discount per type if applicable
+     *
      * @param request
      * @return
      */
@@ -56,6 +57,7 @@ public class BillServiceImpl implements BillService {
         responseDTO.setTotalAmount(total);
         responseDTO.setNetAmount(total - discount);
         responseDTO.setDiscountAmount(discount);
+        log.info("Checkout Result :- {}", responseDTO);
         return responseDTO;
     }
 

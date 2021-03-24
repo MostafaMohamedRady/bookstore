@@ -78,13 +78,14 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookDTO> findAllByIsbnIn(List<String> isbnList) {
         List<BookEntity> entityList = repository.findAllByIsbnIn(isbnList);
+        log.info("isbn list {} :- book details {}", isbnList, entityList);
         return converter.mapToDto(entityList);
     }
 
     @Override
     public void delete(String isbn) {
         List<BookEntity> allByIsbnIn = repository.findAllByIsbnIn(Arrays.asList(isbn));
-        if (CollectionUtils.isEmpty(allByIsbnIn)){
+        if (CollectionUtils.isEmpty(allByIsbnIn)) {
             throw new BookStoreException(BookStoreConstant.NO_MATCHING_DATA);
         }
         repository.deleteAll(allByIsbnIn);
